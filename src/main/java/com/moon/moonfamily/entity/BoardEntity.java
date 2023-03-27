@@ -27,6 +27,6 @@ public class BoardEntity {
     private String boardWriterName;
     private String boardWriteDate;
     private int boardClickCount;
-    private int boardLikeCount;
+    private int boardLikesCount;
     private int boardCommentCount;
 }
