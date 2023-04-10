@@ -31,7 +31,7 @@ public class UserService {
                     .map(f -> f.substring(file.getOriginalFilename().lastIndexOf(".") + 1))
                     .orElse(null);
 
-            Path path = Paths.get("C:/Users/MooN/profile-pictures", userId, "profile." + extension);
+            Path path = Paths.get("profile-pictures", userId, "profile." + extension);
             Files.createDirectories(path.getParent());
             Files.write(path, fileBytes);
 
