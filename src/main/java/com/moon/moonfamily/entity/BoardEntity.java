@@ -20,8 +20,6 @@ public class BoardEntity {
     private String boardTitle;
     private String boardContent;
     private String boardImage;
-    private String boardVideo;
-    private String boardFile;
     private String boardWriterId;
     private String boardWriterProfile;
     private String boardWriterName;

@@ -21,14 +21,15 @@ import java.io.IOException;
 @Component
 public class JwtAuthencationFilter extends OncePerRequestFilter {
 
-    @Autowired private TokenProvider tokenProvider;
+    @Autowired
+    private TokenProvider tokenProvider;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             String token = parseBearerToken(request);
 
-            if(token != null && !token.equalsIgnoreCase("null")) {
+            if (token != null && !token.equalsIgnoreCase("null")) {
                 // 토큰 검증해서 payload의 userId를 가져옴
                 String userId = tokenProvider.validate(token);
 
@@ -54,7 +55,7 @@ public class JwtAuthencationFilter extends OncePerRequestFilter {
     private String parseBearerToken(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
 
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer "))
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer "))
             return bearerToken.substring(7);
         return null;
     }
