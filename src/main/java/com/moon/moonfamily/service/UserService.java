@@ -31,12 +31,12 @@ public class UserService {
                     .map(f -> f.substring(file.getOriginalFilename().lastIndexOf(".") + 1))
                     .orElse(null);
 
-            Path path = Paths.get("profile-pictures", userId, "profile." + extension);
+            Path path = Paths.get("src", "main", "resources", "static", "profile-pictures", userId, "profile." + extension);
             Files.createDirectories(path.getParent());
             Files.write(path, fileBytes);
 
             UserEntity user = userRepository.findByUserId(userId);
-            user.setUserProfile(path.toString());
+            user.setUserProfile(String.valueOf(Paths.get("profile-pictures", userId, "profile." + extension)));
             userRepository.save(user);
         } catch (Exception e) {
             return ResponseDto.setFailed("검증 실패");
