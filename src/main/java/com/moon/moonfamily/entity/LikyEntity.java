@@ -19,6 +19,4 @@ public class LikyEntity {
     private int likeId;
     private int boardNumber;
     private String userId;
-    private String likeUserProfile;
-    private String likeUserName;
 }

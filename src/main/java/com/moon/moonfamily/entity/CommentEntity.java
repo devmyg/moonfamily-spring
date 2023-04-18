@@ -19,8 +19,6 @@ public class CommentEntity {
     private int commentId;
     private int boardNumber;
     private String userId;
-    private String commentUserProfile;
-    private String commentUserName;
     private String commentWriteDate;
     private String commentContent;
 }

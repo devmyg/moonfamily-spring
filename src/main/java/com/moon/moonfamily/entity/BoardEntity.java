@@ -21,8 +21,6 @@ public class BoardEntity {
     private String boardContent;
     private String boardImage;
     private String boardWriterId;
-    private String boardWriterProfile;
-    private String boardWriterName;
     private String boardWriteDate;
     private int boardClickCount;
     private int boardLikesCount;
