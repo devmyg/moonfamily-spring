@@ -1,5 +1,6 @@
 package com.moon.moonfamily.entity;
 
+import com.moon.moonfamily.dto.BoardWriteDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +26,11 @@ public class BoardEntity {
     private int boardClickCount;
     private int boardLikesCount;
     private int boardCommentCount;
+
+    public BoardEntity(BoardWriteDto dto) {
+        this.boardTitle = dto.getBoardTitle();
+        this.boardContent = dto.getBoardContent();
+        this.boardImage = dto.getBoardImage();
+        this.boardWriterId = dto.getBoardWriterId();
+    }
 }

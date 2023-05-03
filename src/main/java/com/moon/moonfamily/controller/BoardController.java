@@ -1,14 +1,13 @@
 package com.moon.moonfamily.controller;
 
+import com.moon.moonfamily.dto.BoardWriteDto;
 import com.moon.moonfamily.dto.ResponseDto;
 import com.moon.moonfamily.entity.BoardEntity;
 import com.moon.moonfamily.entity.PopularSearchEntity;
 import com.moon.moonfamily.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +31,11 @@ public class BoardController {
     @GetMapping("/popularsearchList")
     public ResponseDto<List<PopularSearchEntity>> getPopularsearchList() {
         return boardService.getPopularsearchList();
+    }
+
+    @PostMapping("/write")
+    public ResponseDto<?> write(@RequestBody BoardWriteDto boardWriteDto, @RequestHeader(name = "Authorization") String token) {
+        ResponseDto<?> result = boardService.write(boardWriteDto, token);
+        return result;
     }
 }
