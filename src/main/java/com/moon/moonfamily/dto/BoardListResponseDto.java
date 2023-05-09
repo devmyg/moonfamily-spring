@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardWriteDto {
-    private String boardTitle;
-    private String boardContent;
-    private String boardImage;
-
+public class BoardListResponseDto {
+    private List<BoardListDto> boardList;
+    private int totalPages;
 }

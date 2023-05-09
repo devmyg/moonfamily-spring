@@ -27,7 +27,6 @@ public class AuthService {
     public ResponseDto<?> signUp(SignUpDto dto) {
         String userId = dto.getUserId();
         String userPassword = dto.getUserPassword();
-        String userPasswordCheck = dto.getUserPasswordCheck();
 
         // ID 중복 확인
         try {
@@ -35,9 +34,6 @@ public class AuthService {
         } catch (Exception error) {
             return ResponseDto.setFailed("Data Base Error!");
         }
-
-        // 비밀번호가 다를 경우
-        if (!userPassword.equals(userPasswordCheck)) return ResponseDto.setFailed("Password does not matched!");
 
         // UserEntity 생성
         UserEntity userEntity = new UserEntity(dto);

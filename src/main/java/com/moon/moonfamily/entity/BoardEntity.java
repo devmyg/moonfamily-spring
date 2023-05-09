@@ -24,13 +24,12 @@ public class BoardEntity {
     private String boardWriterId;
     private String boardWriteDate;
     private int boardClickCount;
-    private int boardLikesCount;
+    private int boardLikeCount;
     private int boardCommentCount;
 
     public BoardEntity(BoardWriteDto dto) {
         this.boardTitle = dto.getBoardTitle();
         this.boardContent = dto.getBoardContent();
         this.boardImage = dto.getBoardImage();
-        this.boardWriterId = dto.getBoardWriterId();
     }
 }
