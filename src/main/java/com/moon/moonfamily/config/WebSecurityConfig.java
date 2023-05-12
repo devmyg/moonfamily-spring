@@ -1,6 +1,6 @@
 package com.moon.moonfamily.config;
 
-import com.moon.moonfamily.filter.JwtAuthencationFilter;
+import com.moon.moonfamily.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig {
     @Autowired
-    JwtAuthencationFilter jwtAuthencationFilter;
+    JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
@@ -32,7 +32,7 @@ public class WebSecurityConfig {
                 // 나머지 Request에 대해서는 모두 인증된 사용자만 사용 가능하게 함
                 .anyRequest().authenticated();
 
-        httpSecurity.addFilterBefore(jwtAuthencationFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
 }
