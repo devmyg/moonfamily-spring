@@ -21,7 +21,11 @@ public class BoardEntity {
     private String boardTitle;
     private String boardContent;
     private String boardImage;
-    private String boardWriterId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_writer_id", nullable = false)
+    private UserEntity user;
+
     private String boardWriteDate;
     private int boardClickCount;
     private int boardLikeCount;

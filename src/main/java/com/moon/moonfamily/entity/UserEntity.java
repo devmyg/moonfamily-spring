@@ -1,5 +1,7 @@
 package com.moon.moonfamily.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.moon.moonfamily.dto.SignUpDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +21,10 @@ import javax.persistence.Table;
 public class UserEntity {
     @Id
     private String userId;
+    @JsonIgnore
     private String userPassword;
     private String userName;
+    @JsonIgnore
     private String userPhoneNumber;
     private String userProfile;
 

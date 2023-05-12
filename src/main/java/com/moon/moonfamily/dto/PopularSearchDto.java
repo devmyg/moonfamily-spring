@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardWriteDto {
-    private String boardTitle;
-    private String boardContent;
-    private String boardImage;
+public class PopularSearchDto {
+    private String popularTerm;
+    private int popularSearchCount;
 }

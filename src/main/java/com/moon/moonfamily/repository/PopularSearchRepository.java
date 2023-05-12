@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface PopularSearchRepository extends JpaRepository<PopularSearchEntity, String> {
 
-    public List<PopularSearchEntity> findTop10ByOrderByPopularSearchCountDesc();
+    List<PopularSearchEntity> findTop3ByOrderByPopularSearchCountDesc();
+
+    PopularSearchEntity findByPopularTerm(String value);
 }

@@ -13,10 +13,15 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="PopularSearch")
-@Table(name="PopularSearch")
+@Entity(name="Popularsearch")
+@Table(name="Popularsearch")
 public class PopularSearchEntity {
     @Id
     private String popularTerm;
     private int popularSearchCount;
+
+    public PopularSearchEntity(String value) {
+        this.popularTerm = value;
+        this.popularSearchCount = 1;
+    }
 }

@@ -30,9 +30,9 @@ public class AuthService {
 
         // ID 중복 확인
         try {
-            if (userRepository.existsById(userId)) return ResponseDto.setFailed("Existed ID!");
+            if (userRepository.existsById(userId)) return ResponseDto.setFailed("회원가입 실패(존재하는 아이디)");
         } catch (Exception error) {
-            return ResponseDto.setFailed("Data Base Error!");
+            return ResponseDto.setFailed("데이터베이스 에러");
         }
 
         // UserEntity 생성
@@ -46,10 +46,10 @@ public class AuthService {
         try {
             userRepository.save(userEntity);
         } catch (Exception error) {
-            return ResponseDto.setFailed("Data Base Error!");
+            return ResponseDto.setFailed("데이터베이스 에러");
         }
 
-        return ResponseDto.setSuccess("Sign Up Success", null);
+        return ResponseDto.setSuccess("성공", null);
     }
 
     public ResponseDto<SignInResponseDto> signIn(SignInDto dto) {
@@ -72,6 +72,6 @@ public class AuthService {
         int exprTime = 3600000;
 
         SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, userEntity);
-        return ResponseDto.setSuccess("로그인 성공", signInResponseDto);
+        return ResponseDto.setSuccess("성공", signInResponseDto);
     }
 }
