@@ -1,13 +1,14 @@
 package com.moon.moonfamily.controller;
 
-import com.moon.moonfamily.dto.*;
-import com.moon.moonfamily.entity.PopularSearchEntity;
+import com.moon.moonfamily.dto.BoardListDto;
+import com.moon.moonfamily.dto.BoardListResponseDto;
+import com.moon.moonfamily.dto.BoardWriteDto;
+import com.moon.moonfamily.dto.ResponseDto;
 import com.moon.moonfamily.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
 @RestController
 @RequestMapping("/api/board")

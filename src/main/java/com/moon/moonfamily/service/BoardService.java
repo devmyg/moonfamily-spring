@@ -108,7 +108,7 @@ public class BoardService {
     @Transactional
     public ResponseDto<?> increaseBoardLikeCount(int boardNumber) {
         Optional<BoardEntity> boardEntityOpt = boardRepository.findById(boardNumber);
-        if(!boardEntityOpt.isPresent()) return ResponseDto.setFailed("게시물이 존재하지 않습니다.");
+        if (!boardEntityOpt.isPresent()) return ResponseDto.setFailed("게시물이 존재하지 않습니다.");
 
         BoardEntity boardEntity = boardEntityOpt.get();
         boardEntity.setBoardLikeCount(boardEntity.getBoardLikeCount() + 1);
@@ -124,7 +124,7 @@ public class BoardService {
     @Transactional
     public ResponseDto<?> increaseBoardClickCount(int boardNumber) {
         Optional<BoardEntity> boardEntityOpt = boardRepository.findById(boardNumber);
-        if(!boardEntityOpt.isPresent()) return ResponseDto.setFailed("게시물이 존재하지 않습니다.");
+        if (!boardEntityOpt.isPresent()) return ResponseDto.setFailed("게시물이 존재하지 않습니다.");
 
         BoardEntity boardEntity = boardEntityOpt.get();
         boardEntity.setBoardClickCount(boardEntity.getBoardClickCount() + 1);
@@ -189,7 +189,7 @@ public class BoardService {
 
         BoardListResponseDto boardListResponseDto;
         PopularSearchEntity popularSearchEntity = popularSearchRepository.findByPopularTerm(value);
-        if(popularSearchEntity == null) popularSearchEntity = new PopularSearchEntity(value);
+        if (popularSearchEntity == null) popularSearchEntity = new PopularSearchEntity(value);
         else popularSearchEntity.setPopularSearchCount(popularSearchEntity.getPopularSearchCount() + 1);
         try {
             popularSearchRepository.save(popularSearchEntity);

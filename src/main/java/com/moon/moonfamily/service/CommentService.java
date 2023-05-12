@@ -40,7 +40,7 @@ public class CommentService {
         UserEntity userEntity = userRepository.findByUserId(userId);
         Optional<BoardEntity> boardEntityOptional = boardRepository.findByBoardNumber(dto.getBoardNumber());
 
-        if(!boardEntityOptional.isPresent()) return ResponseDto.setFailed("게시물이 존재하지 않습니다.");
+        if (!boardEntityOptional.isPresent()) return ResponseDto.setFailed("게시물이 존재하지 않습니다.");
 
         BoardEntity boardEntity = boardEntityOptional.get();
         CommentEntity commentEntity = new CommentEntity(dto);
@@ -70,10 +70,10 @@ public class CommentService {
         if (userId == null) return ResponseDto.setFailed("유효하지 않은 토큰");
 
         Optional<CommentEntity> commentEntityOptional = commentRepository.findById(commentId);
-        if(!commentEntityOptional.isPresent()) return ResponseDto.setFailed("댓글이 존재하지 않습니다.");
+        if (!commentEntityOptional.isPresent()) return ResponseDto.setFailed("댓글이 존재하지 않습니다.");
 
         CommentEntity commentEntity = commentEntityOptional.get();
-        if(!commentEntity.getUser().getUserId().equals(userId)) return ResponseDto.setFailed("작성자만 댓글을 삭제할 수 있습니다.");
+        if (!commentEntity.getUser().getUserId().equals(userId)) return ResponseDto.setFailed("작성자만 댓글을 삭제할 수 있습니다.");
 
         try {
             commentRepository.deleteById(commentId);
@@ -95,7 +95,7 @@ public class CommentService {
         if (userId == null) return ResponseDto.setFailed("유효하지 않은 토큰");
 
         Optional<CommentEntity> commentEntityOptional = commentRepository.findById(commentId);
-        if(commentEntityOptional == null) return ResponseDto.setFailed("댓글이 존재하지 않습니다.");
+        if (commentEntityOptional == null) return ResponseDto.setFailed("댓글이 존재하지 않습니다.");
 
         CommentEntity commentEntity = commentEntityOptional.get();
         if (!commentEntity.getUser().getUserId().equals(userId)) return ResponseDto.setFailed("작성자만 수정이 가능합니다.");

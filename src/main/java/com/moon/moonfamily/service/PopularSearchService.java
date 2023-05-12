@@ -1,6 +1,5 @@
 package com.moon.moonfamily.service;
 
-import com.moon.moonfamily.dto.PopularSearchDto;
 import com.moon.moonfamily.dto.ResponseDto;
 import com.moon.moonfamily.entity.PopularSearchEntity;
 import com.moon.moonfamily.repository.PopularSearchRepository;

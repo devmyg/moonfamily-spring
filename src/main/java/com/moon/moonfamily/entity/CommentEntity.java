@@ -12,8 +12,8 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="Comment")
-@Table(name="Comment")
+@Entity(name = "Comment")
+@Table(name = "Comment")
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

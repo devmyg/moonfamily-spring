@@ -1,7 +1,6 @@
 package com.moon.moonfamily.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.moon.moonfamily.dto.SignUpDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

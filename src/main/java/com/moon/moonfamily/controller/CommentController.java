@@ -1,6 +1,5 @@
 package com.moon.moonfamily.controller;
 
-import com.moon.moonfamily.dto.BoardWriteDto;
 import com.moon.moonfamily.dto.CommentWriteDto;
 import com.moon.moonfamily.dto.ResponseDto;
 import com.moon.moonfamily.service.CommentService;
@@ -15,7 +14,7 @@ public class CommentController {
 
     @PostMapping("/write")
     public ResponseDto<?> write(@RequestBody CommentWriteDto dto, @RequestHeader(value = "Authorization") String token) {
-      return commentService.write(dto, token);
+        return commentService.write(dto, token);
     }
 
     @DeleteMapping("/{commentId}")
