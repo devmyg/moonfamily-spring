@@ -6,8 +6,10 @@ import com.moon.moonfamily.dto.SignInResponseDto;
 import com.moon.moonfamily.dto.SignUpDto;
 import com.moon.moonfamily.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,10 +28,5 @@ public class AuthController {
     public ResponseDto<SignInResponseDto> signIn(@RequestBody SignInDto requestBody) {
         ResponseDto<SignInResponseDto> result = authService.signIn(requestBody);
         return result;
-    }
-
-    @GetMapping("/")
-    public String getBoard(@AuthenticationPrincipal String userId) {
-        return "로그인된 사용자는 " + userId + "입니다.";
     }
 }
