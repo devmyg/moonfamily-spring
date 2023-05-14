@@ -65,7 +65,7 @@ public class CommentService {
     }
 
     @Transactional
-    public ResponseDto<?> delete(int commentId, String token) {
+    public ResponseDto<?>delete(int commentId, String token) {
         String userId = tokenProvider.validate(token);
         if (userId == null) return ResponseDto.setFailed("유효하지 않은 토큰");
 
@@ -75,8 +75,12 @@ public class CommentService {
         CommentEntity commentEntity = commentEntityOptional.get();
         if (!commentEntity.getUser().getUserId().equals(userId)) return ResponseDto.setFailed("작성자만 댓글을 삭제할 수 있습니다.");
 
+        BoardEntity boardEntity = commentEntity.getBoard();
+        boardEntity.setBoardCommentCount(boardEntity.getBoardCommentCount() - 1);
+
         try {
             commentRepository.deleteById(commentId);
+            boardRepository.save(boardEntity);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseDto.setFailed("데이터베이스 에러");
