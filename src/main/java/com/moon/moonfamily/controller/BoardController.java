@@ -17,25 +17,30 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("/top3")
-    public ResponseDto<List<BoardListDto>> getTop3ByViewsInLast7Days() {
-        return boardService.getTop3();
-    }
-
-    @GetMapping("/list")
-    public ResponseDto<BoardListResponseDto> getBoardList(@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size, @RequestHeader(name = "Authorization") String token) {
-        return boardService.getBoardList(page, size, token);
-    }
-
     @PostMapping("/write")
     public ResponseDto<?> write(@RequestBody BoardWriteDto boardWriteDto, @RequestHeader(name = "Authorization") String token) {
         ResponseDto<?> result = boardService.write(boardWriteDto, token);
         return result;
     }
 
+    @PatchMapping("/{boardNumber}")
+    public ResponseDto<?> updateBoard(@PathVariable int boardNumber, @RequestBody BoardWriteDto dto, @RequestHeader(name = "Authorization") String token) {
+        return boardService.updateBoard(boardNumber, dto, token);
+    }
+
     @GetMapping("/{boardNumber}")
     public ResponseDto<?> getBoard(@PathVariable int boardNumber) {
         return boardService.getBoard(boardNumber);
+    }
+
+    @DeleteMapping("/{boardNumber}")
+    public ResponseDto<?> deleteBoard(@PathVariable int boardNumber, @RequestHeader(name = "Authorization") String token) {
+        return boardService.deleteBoard(boardNumber, token);
+    }
+
+    @GetMapping("/list")
+    public ResponseDto<BoardListResponseDto> getBoardList(@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size, @RequestHeader(name = "Authorization") String token) {
+        return boardService.getBoardList(page, size, token);
     }
 
     @PutMapping("/{boardNumber}/click")
@@ -48,21 +53,16 @@ public class BoardController {
         return boardService.increaseBoardClickCount(boardNumber);
     }
 
-    @PatchMapping("/{boardNumber}")
-    public ResponseDto<?> updateBoard(@PathVariable int boardNumber, @RequestBody BoardWriteDto dto, @RequestHeader(name = "Authorization") String token) {
-        return boardService.updateBoard(boardNumber, dto, token);
-    }
-
-    @DeleteMapping("/{boardNumber}")
-    public ResponseDto<?> deleteBoard(@PathVariable int boardNumber, @RequestHeader(name = "Authorization") String token) {
-        return boardService.deleteBoard(boardNumber, token);
-    }
-
     @GetMapping("/search")
     public ResponseDto<BoardListResponseDto> searchBoard(@RequestParam(value = "value") String value,
                                                          @RequestParam(value = "page", defaultValue = "0") int page,
                                                          @RequestParam(value = "size", defaultValue = "10") int size,
                                                          @RequestHeader(value = "Authorization") String token) {
         return boardService.search(value, page, size, token);
+    }
+
+    @GetMapping("/top3")
+    public ResponseDto<List<BoardListDto>> getTop3ByViewsInLast7Days() {
+        return boardService.getTop3();
     }
 }
