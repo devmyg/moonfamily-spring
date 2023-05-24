@@ -39,7 +39,7 @@ public class UserService {
                 return ResponseDto.setFailed("지원하지 않는 확장자입니다.");
             }
 
-            Path path = Paths.get("C:", "Study", "moonfamily", "profile-pictures", userId, "profile." + extension);
+            Path path = Paths.get("profile-pictures", userId, "profile." + extension);
             Files.createDirectories(path.getParent());
             Files.write(path, fileBytes);
 
