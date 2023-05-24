@@ -8,6 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/profile-pictures/**").addResourceLocations("file:///C:/study/moonfamily/profile-pictures/");
+        registry.addResourceHandler("/profile-pictures/**").addResourceLocations("file:/home/ubuntu/spring/profile-pictures/");
     }
 }
