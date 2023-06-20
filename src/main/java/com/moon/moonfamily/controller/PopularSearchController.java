@@ -17,7 +17,7 @@ public class PopularSearchController {
     @Autowired
     PopularSearchService popularSearchService;
 
-    @GetMapping("/popularSearch")
+    @GetMapping("/popular-search")
     public ResponseDto<List<PopularSearchEntity>> getPopularSearch() {
         return popularSearchService.getPopularSearch();
     }

@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/uploadProfilePicture")
+    @PostMapping("/upload-profile-picture")
     public ResponseDto<?> uploadProfilePicture(@RequestHeader("Authorization") String token, @RequestPart("file") MultipartFile file) {
         ResponseDto<?> result = userService.uploadProfilePicture(token, file);
         return result;

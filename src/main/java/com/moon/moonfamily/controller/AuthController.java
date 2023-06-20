@@ -16,13 +16,13 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public ResponseDto<?> signUp(@RequestBody SignUpDto requestBody) {
         ResponseDto<?> result = authService.signUp(requestBody);
         return result;
     }
 
-    @PostMapping("/signIn")
+    @PostMapping("/signin")
     public ResponseDto<SignInResponseDto> signIn(@RequestBody SignInDto requestBody) {
         ResponseDto<SignInResponseDto> result = authService.signIn(requestBody);
         return result;
