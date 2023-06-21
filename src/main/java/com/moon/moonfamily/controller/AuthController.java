@@ -2,7 +2,6 @@ package com.moon.moonfamily.controller;
 
 import com.moon.moonfamily.dto.ResponseDto;
 import com.moon.moonfamily.dto.SignInDto;
-import com.moon.moonfamily.dto.SignInResponseDto;
 import com.moon.moonfamily.dto.SignUpDto;
 import com.moon.moonfamily.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,8 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseDto<SignInResponseDto> signIn(@RequestBody SignInDto requestBody) {
-        ResponseDto<SignInResponseDto> result = authService.signIn(requestBody);
+    public ResponseDto<?> signIn(@RequestBody SignInDto requestBody) {
+        ResponseDto<?> result = authService.signIn(requestBody);
         return result;
     }
 
